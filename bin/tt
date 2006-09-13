@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Getopt::Long;
+use Template::Process;
+
+my %options = (
+);
+GetOptions(
+   \%options,
+   'tt=s',
+   'data|y=s@',
+   'out|o=s'
+);
+
+my $tt = Template::Process->new();
+$tt->process(TT => $options{tt}, 
+             DATA => $options{data},
+             OUT => $options{out})
+    or die "$0: ", $tt->error;
+
