@@ -9,4 +9,6 @@ bin/tt
 
 t/01_use.t
 t/02_basic.t
+t/99_pod.t
+
 META.yml                                 Module meta-data (added by MakeMaker)

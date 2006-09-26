@@ -5,7 +5,7 @@ use 5;
 use strict;
 use warnings;
 
-our $VERSION = '0.00_01';
+our $VERSION = '0.0002';
 $VERSION = eval $VERSION;
 
 use base qw(Class::Accessor);

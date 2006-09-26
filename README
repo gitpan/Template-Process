@@ -1,7 +1,9 @@
-Template-Process version 0.00_01
+Template-Process version 0.0002
 ================================
 
-Template::Process is ???
+Template::Process is a utility to load
+TT2 templates and data in various formats
+and process them.
 
 INSTALLATION
 
@@ -16,7 +18,8 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-  blah blah blah
+  Template
+  Test::More
 
 COPYRIGHT AND LICENCE
 

@@ -2,6 +2,8 @@
 use 5;
 use ExtUtils::MakeMaker;
 
+my $EUMM_VERSION = eval $ExtUtils::MakeMaker::VERSION;
+
 WriteMakefile(
     NAME              => 'Template::Process',
     VERSION_FROM      => 'lib/Template/Process.pm', 
@@ -19,5 +21,8 @@ WriteMakefile(
     ($] >= 5.005 ? (
       ABSTRACT_FROM  => 'lib/Template/Process.pm', 
       AUTHOR         => 'Adriano Ferreira <ferreira@cpan.org>',
+    ) : ()),
+    ($EUMM_VERSION >= 6.30_01 ? (
+      LICENSE => 'perl',
     ) : ()),
 );
