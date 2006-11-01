@@ -5,7 +5,7 @@ use 5;
 use strict;
 use warnings;
 
-our $VERSION = '0.0002';
+our $VERSION = '0.0003';
 $VERSION = eval $VERSION;
 
 use base qw(Class::Accessor);
@@ -28,7 +28,9 @@ sub _yaml {
 
 =item B<_process>
 
-    $tt->_process(TT => $tt, DATA => \@hashes);
+    $tt->_process(TT => $tt, DATA => \@hashes, OUT => $handle);
+
+
 
 =end private
 
@@ -59,10 +61,14 @@ sub _io { # this works only for $] >= 5.8
 
     $tt->process(TT => $tt, DATA => \@data, OUT => $out);
 
-The elements at C<@data> may be: hash refs,
-YAML filenames. A YAML filename is expected
-to exist (C<-f $_> returns true) and match
-C</\.ya?ml$/>.
+The elements at C<@data> may be: hash refs, YAML filenames. 
+A YAML filename is expected to exist (C<-f $_> returns true) 
+and match C</\.ya?ml$/>.
+
+If C<DATA> is ommitted, the template is processed with no
+extra variables.
+
+If C<OUT> is ommitted, C<\*STDOUT> is used.
 
 =end private
 
@@ -74,7 +80,9 @@ sub process {
 #    warn YAML::Dump \%args;
     my $tt = $args{TT};
     my @data;
-    my @yaml = ref $args{DATA} ? @{$args{DATA}} : ($args{DATA});
+    my @yaml = defined $args{DATA} ?
+               (ref $args{DATA} ? @{$args{DATA}} : ($args{DATA})) :
+               ();
     for (@yaml) {
         if (ref $_) { # perl data already
             push @data, $_;
@@ -96,6 +104,7 @@ sub process {
 sub error { return shift->tt->error }
 
 1;
+
 __END__
 =head1 NAME
 
@@ -105,7 +114,8 @@ Template::Process - Process TT2 templates against data files
 
   use Template::Process;
   $tt = Template::Process->new();
-  $tt->run(TT => 'h.tt.html', VARS => 'vars.yml', OUT => 'h.html');
+  $tt->run(TT => 'h.tt.html', DATA => 'vars.yml', OUT => 'h.html');
+                              # VARS
 
 =head1 DESCRIPTION
 

@@ -22,7 +22,7 @@ WriteMakefile(
       ABSTRACT_FROM  => 'lib/Template/Process.pm', 
       AUTHOR         => 'Adriano Ferreira <ferreira@cpan.org>',
     ) : ()),
-    ($EUMM_VERSION >= 6.30_01 ? (
+    ($EUMM_VERSION >= 6.31 ? (
       LICENSE => 'perl',
     ) : ()),
 );

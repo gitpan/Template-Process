@@ -1,4 +1,4 @@
-Template-Process version 0.0002
+Template-Process version 0.0003
 ================================
 
 Template::Process is a utility to load
@@ -19,6 +19,10 @@ DEPENDENCIES
 This module requires these other modules and libraries:
 
   Template
+  Class::Accessor
+  Carp
+  Getopt::Long
+
   Test::More
 
 COPYRIGHT AND LICENCE

@@ -4,7 +4,8 @@ use strict;
 use warnings;
 
 use Getopt::Long;
-use Template::Process;
+
+use Template::Process; my $VERSION = $Template::Process::VERSION;
 
 my %options = (
 );
