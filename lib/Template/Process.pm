@@ -5,7 +5,7 @@ use 5;
 use strict;
 use warnings;
 
-our $VERSION = '0.0003';
+our $VERSION = '0.0004';
 $VERSION = eval $VERSION;
 
 use base qw(Class::Accessor);
@@ -133,11 +133,11 @@ None at all. This is OO.
 
 =head1 SEE ALSO
 
-    ttree (from Template distribution)
+  ttree (from Template-Toolkit distribution)
 
 =head1 AUTHOR
 
-Adriano Ferreira, E<lt>ferreira@cpan.org<gt>
+Adriano Ferreira, E<lt>ferreira@cpan.orgE<gt>
 
 =head1 COPYRIGHT
 

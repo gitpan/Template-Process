@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Template-Process
-version:             0.0003
+version:             0.0004
 abstract:            Process TT2 templates against data files
 license:             perl
 generated_by:        ExtUtils::MakeMaker version 6.31

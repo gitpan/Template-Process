@@ -22,3 +22,34 @@ $tt->process(TT => $options{tt},
              OUT => $options{out})
     or die "$0: ", $tt->error;
 
+__END__
+=head1 NAME
+
+tt - Process TT2 templates against data files
+
+=head1 SYNOPSIS
+
+  $ tt --tt my-template.html --data data.yaml --out page.html
+
+  $ tt --tt foo.tt.txt -y grok.yml -o bar.txt
+
+
+=head1 SEE ALSO
+
+  Template::Process
+
+=head1 AUTHOR
+
+Adriano Ferreira, E<lt>ferreira@cpan.orgE<gt>
+
+=head1 COPYRIGHT
+
+Copyright (C) 2006 by Adriano Ferreira
+
+=head1 LICENSE
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+
+=cut

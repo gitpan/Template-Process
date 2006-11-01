@@ -1,5 +1,8 @@
 Revision history for Perl extension Template::Process.
 
+0.0004 Wed Nov 1 2006
+        - provide some docs to 'tt' script
+
 0.0003 Wed Nov 1 2006
         - tt now deals with an empty list of data files
           without warning
