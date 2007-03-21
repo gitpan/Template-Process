@@ -5,7 +5,7 @@ use 5;
 use strict;
 use warnings;
 
-our $VERSION = '0.0004';
+our $VERSION = '0.0005';
 $VERSION = eval $VERSION;
 
 use base qw(Class::Accessor);
@@ -30,8 +30,6 @@ sub _yaml {
 
     $tt->_process(TT => $tt, DATA => \@hashes, OUT => $handle);
 
-
-
 =end private
 
 =cut
@@ -51,28 +49,9 @@ sub _process {
 
 sub _io { # this works only for $] >= 5.8
     open my $io, '>', shift
-	or croak "can't open in-core file: $!";
+        or croak "can't open in-core file: $!";
     return $io;
 }
-
-=begin private
-
-=item B<process>
-
-    $tt->process(TT => $tt, DATA => \@data, OUT => $out);
-
-The elements at C<@data> may be: hash refs, YAML filenames. 
-A YAML filename is expected to exist (C<-f $_> returns true) 
-and match C</\.ya?ml$/>.
-
-If C<DATA> is ommitted, the template is processed with no
-extra variables.
-
-If C<OUT> is ommitted, C<\*STDOUT> is used.
-
-=end private
-
-=cut
 
 sub process {
     my $self = shift;
@@ -114,8 +93,9 @@ Template::Process - Process TT2 templates against data files
 
   use Template::Process;
   $tt = Template::Process->new();
-  $tt->run(TT => 'h.tt.html', DATA => 'vars.yml', OUT => 'h.html');
-                              # VARS
+                                # VARS
+  $tt->process(TT => 'h.tt.html', DATA => 'vars.yml', OUT => 'h.html')
+      or die $tt->error;
 
 =head1 DESCRIPTION
 
@@ -126,6 +106,38 @@ coding.
 
 This is the heart of the B<tt> script (which comes
 in the same distribution).
+
+=head2 METHODS
+
+=over 4
+
+=item B<new>
+
+    $tt = Template::Process->new;
+
+The constructor.
+
+=item B<process>
+
+    $tt->process(TT => $tt, DATA => \@data, OUT => $out);
+
+The elements at C<@data> may be: hash refs, YAML filenames. 
+A YAML filename is expected to exist (C<-f $_> returns true) 
+and match C</\.ya?ml$/>.
+
+If C<DATA> is ommitted, the template is processed with no
+extra variables.
+
+If C<OUT> is ommitted, C<\*STDOUT> is used.
+
+=item B<error>
+
+    $tt->process(@ARGS) or
+        die $tt->error;
+
+In case of processing errors, returns a (hopefully) helpful message.
+
+=back
 
 =head2 EXPORT
 
@@ -141,7 +153,7 @@ Adriano Ferreira, E<lt>ferreira@cpan.orgE<gt>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2006 by Adriano Ferreira
+Copyright (C) 2006-2007 by Adriano Ferreira
 
 =head1 LICENSE
 

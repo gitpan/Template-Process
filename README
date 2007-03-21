@@ -1,4 +1,4 @@
-Template-Process version 0.0004
+Template-Process version 0.0005
 ================================
 
 Template::Process is a utility to load
@@ -22,12 +22,13 @@ This module requires these other modules and libraries:
   Class::Accessor
   Carp
   Getopt::Long
+  YAML
 
   Test::More
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2006 by Adriano Ferreira
+Copyright (C) 2006-2007 by Adriano Ferreira
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

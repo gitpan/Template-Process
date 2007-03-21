@@ -1,5 +1,10 @@
 Revision history for Perl extension Template::Process.
 
+0.0005 Tue Mar 21 2007
+        - no need for updating
+        - exposed more docs
+        - added a test for POD coverage
+
 0.0004 Wed Nov 1 2006
         - provide some docs to 'tt' script
 
