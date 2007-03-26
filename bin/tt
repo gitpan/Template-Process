@@ -29,7 +29,7 @@ tt - Process TT2 templates against data files
 
 =head1 SYNOPSIS
 
-  $ tt --tt my-template.html --data data.yaml --out page.html
+  $ tt --tt my-template.html --data data.yaml --data fun-lib.pl --out page.html
 
   $ tt --tt foo.tt.txt -y grok.yml -o bar.txt
 

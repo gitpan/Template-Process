@@ -5,7 +5,7 @@ use 5;
 use strict;
 use warnings;
 
-our $VERSION = '0.0005';
+our $VERSION = '0.0006';
 $VERSION = eval $VERSION;
 
 use base qw(Class::Accessor);
@@ -13,15 +13,10 @@ Template::Process->mk_accessors(qw(tt));
 
 use Carp qw(carp croak);
 use Template;
-use YAML qw(LoadFile);
+use Data::IO;
 
 sub new {
     return shift->SUPER::new({ tt => Template->new });
-}
-
-sub _yaml {
-    my $yml = shift;
-    return LoadFile $yml;
 }
 
 =begin private
@@ -58,15 +53,19 @@ sub process {
     my %args = @_;
 #    warn YAML::Dump \%args;
     my $tt = $args{TT};
+    my $reader = Data::IO->new;
+
     my @data;
-    my @yaml = defined $args{DATA} ?
+    my @args = defined $args{DATA} ?
                (ref $args{DATA} ? @{$args{DATA}} : ($args{DATA})) :
                ();
-    for (@yaml) {
+    for (@args) {
         if (ref $_) { # perl data already
             push @data, $_;
         } elsif (-f && /\.ya?ml$/) {
-            push @data, _yaml($_);
+            push @data, $reader->_read_yaml($_);
+        } elsif (-f && /\.PL$/i) {
+            push @data, $reader->_read_perl($_);
         } else {
             carp "'$_' ignored: unkown format\n";
         }
@@ -121,9 +120,10 @@ The constructor.
 
     $tt->process(TT => $tt, DATA => \@data, OUT => $out);
 
-The elements at C<@data> may be: hash refs, YAML filenames. 
+The elements at C<@data> may be: hash refs, YAML and Perl filenames. 
 A YAML filename is expected to exist (C<-f $_> returns true) 
-and match C</\.ya?ml$/>.
+and match C</\.ya?ml$/>. A Perl filename must satisfy C<-f $_>
+and match C</\.PL$/>.
 
 If C<DATA> is ommitted, the template is processed with no
 extra variables.

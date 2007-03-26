@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Template-Process
-version:             0.0006
+version:             0.0005
 abstract:            Process TT2 templates against data files
 license:             perl
 generated_by:        ExtUtils::MakeMaker version 6.32
@@ -11,7 +11,6 @@ requires:
     Getopt::Long:                  0
     Template:                      0
     Test::More:                    0
-    YAML:                          0
 meta-spec:
     url:     http://module-build.sourceforge.net/META-spec-v1.2.html
     version: 1.2

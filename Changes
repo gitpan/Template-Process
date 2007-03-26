@@ -1,5 +1,12 @@
 Revision history for Perl extension Template::Process.
 
+0.0006 Mon Mar 26 2007
+        - included an example at eg/ directory
+        - data structures written as Perl code may be
+          read as well
+        - by now, YAML is a dependency - so Makefile.PL
+          must include it
+
 0.0005 Tue Mar 21 2007
         - no need for updating
         - exposed more docs
